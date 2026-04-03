@@ -25,10 +25,7 @@ type Config struct {
 func (c *Config) Validate() error {
 	// Path
 	info, err := os.Stat(c.Path)
-	if err != nil {
-		return fmt.Errorf("校验缓存目录时发生错误: %w", err)
-	}
-	if !info.IsDir() {
+	if err == nil && !info.IsDir() {
 		return fmt.Errorf("缓存目录不是目录: %s", c.Path)
 	}
 

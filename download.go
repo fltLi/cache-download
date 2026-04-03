@@ -43,7 +43,7 @@ func New(client *http.Client, cfg *Config) (*Downloader, error) {
 		return nil, fmt.Errorf("HTTP 客户端不可为空")
 	}
 	if err := cfg.Validate(); err != nil {
-		return nil, nil
+		return nil, err
 	}
 
 	entryPath := filepath.Join(cfg.Path, EntryFile)

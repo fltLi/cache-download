@@ -28,7 +28,11 @@ type Entry struct {
 
 // 创建缓存条目管理.
 func New(path string, cacheDuration time.Duration) (*Entry, error) {
-	e := &Entry{path: path}
+	e := &Entry{
+		path:          path,
+		cacheDuration: cacheDuration,
+		entries:       make(map[string]cacheItem),
+	}
 	err := e.Load()
 	return e, err
 }
@@ -120,7 +124,7 @@ func (e *Entry) Get(url string) (string, bool, error) {
 		return "", false, nil
 	}
 
-	// 检查并删除过期缓存
+	// 检查缓存是否过期, 并从条目移除
 	if time.Since(c.ModTime) > e.cacheDuration {
 		func() {
 			e.entryLock.Lock()

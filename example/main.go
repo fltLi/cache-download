@@ -15,7 +15,7 @@ import (
 	"sync"
 	"time"
 
-	"github/fltLi/cache-download"
+	cachedl "github.com/fltLi/cache-download"
 )
 
 type task struct {

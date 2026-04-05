@@ -14,9 +14,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github/fltLi/cache-download/internal/entry"
-	"github/fltLi/cache-download/internal/pool"
-	syncutils "github/fltLi/cache-download/internal/sync"
+	"github.com/fltLi/cache-download/internal/entry"
+	"github.com/fltLi/cache-download/internal/pool"
+	syncutils "github.com/fltLi/cache-download/internal/sync"
 )
 
 const EntryFile = "entry.json"
